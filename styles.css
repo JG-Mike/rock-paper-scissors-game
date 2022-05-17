@@ -1,24 +1,74 @@
-/* body{
-    color: black;
-    background-color: black;
-} */
+
 h1{
-    align-items: center;
-    text-align: center;
     color: blue;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+  justify-content: center;
+  padding: 40px 0px;
+  background-color:black;
+}
+.main {
+  margin-top: 40px;
+  text-align: center;
+}
+.scoreboard {
+  margin-bottom: 15px;
 }
 
-button {
-  border: none;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  outline: none;
+.score-info {
+  font-size: 32px;
 }
-html {
-  /* footer support */
-  position: relative;
-  min-height: 100%;
+
+.score-message {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.scores-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 400px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.score-box {
+  width: 170px;
+}
+
+.score {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn {
+  border-radius: 10px;
+  background-color: var(--secondary-dark);
+}
+
+.btn-square {
+  width: 160px;
+  height: 160px;
+}
+
+.btn:hover {
+  background-color: var(--secondary-dark-hover);
+}
+
+.btn:active {
+  background-color: var(--secondary-dark-active);
+}
+
+.sign {
+  font-size: 80px;
+  margin-bottom: 10px;
 }
