@@ -14,11 +14,28 @@ const overlay = document.getElementById('overlay')
 const restartBtn = document.getElementById('restartBtn')
 
 
+
 rockBtn.addEventListener('click', () => handleClick('rock'))
 paperBtn.addEventListener('click', () => handleClick('paper'))
 scissorsBtn.addEventListener('click', () => handleClick('scissors'))
 restartBtn.addEventListener('click', restartGame)
 overlay.addEventListener('click', closeEndgameModal)
+
+function handleClick(playerChoice) {
+  if (gameOver()) {
+    openEndgameModal()
+    return
+  }
+
+  playRound(playerChoice, computerChoice)
+  updateChoices(playerChoice, computerChoice)
+  updateScore()
+
+  if (gameOver()) {
+    openEndgameModal()
+    setFinalMessage()
+  }
+}
 
 
 let roundWinner = ""
@@ -31,31 +48,30 @@ function computerPlay(){
     const computerOptions =  ["rock","paper", "scissors"]
     const random = computerOptions[(Math.random() * computerOptions.length) | 0]
     console.log (random)
-
 }
 
  const computerChoice = computerPlay()
 
 // code to select winner and count how many rounds each party has made
 function playRound(playerChoice,computerChoice){
-    if (playerChoice=== computerChoice){
+    if (playerChoice === computerChoice){
         roundWinner = "tie"
     }
     if (
-        (playerChoice==="rock" && computerChoice === "scissors" )||
-        (playerChoice==="scissors" && computerChoice === "paper" )||
-        (playerChoice==="paper" && computerChoice === "rock" )||
+        (playerChoice === "rock" && computerChoice === "scissors" )||
+        (playerChoice === "scissors" && computerChoice === "paper" )||
+        (playerChoice === "paper" && computerChoice === "rock" )
     );{
         playerScore++
         roundWinner = 'player'
     }
     if (
-        (computerChoice==="rock" && playerChoice === "scissors" )||
-        (computerChoice==="scissors" && playerChoice === "paper" )||
-        (computerChoice==="paper" && playerChoice === "rock" )||
-    );{
+        (computerChoice === "rock" && playerChoice === "scissors" )||
+        (computerChoice === "scissors" && playerChoice === "paper" )||
+        (computerChoice === "paper" && playerChoice === "rock" )
+    ){
         computerScore++
-        roundWinner= 'computer'
+        roundWinner = 'computer'
     }
 
    
@@ -137,18 +153,4 @@ function restartGame() {
 }
 
 
-function handleClick(playerChoice) {
-  if (isGameOver()) {
-    openEndgameModal()
-    return
-  }
 
-  playRound(playerChoice, computerChoice)
-  updateChoices(playerChoice, computerChoice)
-  updateScore()
-
-  if (isGameOver()) {
-    openEndgameModal()
-    setFinalMessage()
-  }
-}
